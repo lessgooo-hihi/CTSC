@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatkhil Government Technical School and College</title>
+  <style>
+    body {margin:0; font-family:'Noto Sans Bengali', sans-serif; background:#f9f9f9; color:#222;}
+    header {position:sticky; top:0; background:#004080; color:white; display:flex; align-items:center; justify-content:space-between; padding:10px 20px; z-index:1000;}
+    header img {height:50px; border-radius:6px;}
+    nav a {color:white; text-decoration:none; margin:0 10px; font-weight:bold;}
+    nav a:hover {text-decoration:underline;}
+    .hero {background:#0066cc; color:white; text-align:center; padding:50px 20px;}
+    .section {padding:40px 20px; max-width:900px; margin:auto;}
+    .section h2 {color:#004080; margin-bottom:20px; text-align:center;}
+    #notice-list {display:grid; gap:15px;}
+    .notice-card {background:white; padding:15px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);} 
+    .notice-card h3 {margin:0; font-size:18px; color:#004080;}
+    .notice-card p {margin:5px 0;}
+    .notice-card a {color:#0066cc; font-weight:bold; text-decoration:none;}
+    footer {background:#00264d; color:white; text-align:center; padding:20px; margin-top:30px;}
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex; align-items:center; gap:10px;">
+    <strong>Chatkhil Government Technical School and College</strong>
+  </div>
+  <nav>
+    <a href="#about">About Us</a>
+    <a href="#academic">Academics</a>
+    <a href="#notices">Notices</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Welcome to Chatkhil Government Technical School and College</h1>
+  <p>Education, Discipline, and the Light of Technology</p>
+</section>
+
+<section id="about" class="section">
+  <h2>About Us</h2>
+  <p>Chatkhil Government Technical School and College is a modern educational institution where students are building their future through technical and general education.</p>
+</section>
+
+<section id="academic" class="section">
+  <h2>Academics</h2>
+  <p>Our institution provides technical and general education programs. We offer quality education with experienced teachers and modern classrooms.</p>
+</section>
+
+<section id="notices" class="section">
+  <h2>Notices Board</h2>
+  <div id="notice-list">Loading...</div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <p><strong>Address:</strong> Maijdi - Ramgonj Rd, Dashgaria 3878</p>
+  <p><strong>Phone:</strong> 01825062230</p>
+</section>
+
+<footer>
+  <p>© 2025 Chatkhil Government Technical School and College</p>
+</footer>
+
+<script>
+  const sheetID = "1FGNgaNGtq4rDewGnVDkGpBbclHx9bFST6FFebRwcGnM"; // Your Google Sheet ID
+  const sheetURL = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
+
+  fetch(sheetURL)
+    .then(res => res.text())
+    .then(data => {
+      const json = JSON.parse(data.substr(47).slice(0,-2));
+      const rows = json.table.rows;
+      const container = document.getElementById('notice-list');
+      container.innerHTML = "";
+      rows.forEach(r => {
+        const date = r.c[0]?.v || "";
+        const title = r.c[1]?.v || "";
+        const link = r.c[2]?.v || "";
+        if(title){
+          const card = document.createElement('div');
+          card.className = 'notice-card';
+          card.innerHTML = `<h3>${title}</h3><p>Date: ${date}</p>${link?`<a href="${link}" target="_blank">Details</a>`:""}`;
+          container.appendChild(card);
+        }
+      });
+    })
+    .catch(err => {
+      document.getElementById('notice-list').innerText = 'There was an issue loading the notices';
+    });
+</script>
+
+</body>
+</html>
