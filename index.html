@@ -4,61 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chatkhil Government Technical School and College</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    body {margin:0; font-family:'Noto Sans Bengali', sans-serif; background:#f9f9f9; color:#222;}
-    header {position:sticky; top:0; background:#004080; color:white; display:flex; align-items:center; justify-content:space-between; padding:10px 20px; z-index:1000;}
-    header img {height:50px; border-radius:6px;}
-    nav a {color:white; text-decoration:none; margin:0 10px; font-weight:bold;}
-    nav a:hover {text-decoration:underline;}
-    .hero {background:#0066cc; color:white; text-align:center; padding:50px 20px;}
-    .section {padding:40px 20px; max-width:900px; margin:auto;}
-    .section h2 {color:#004080; margin-bottom:20px; text-align:center;}
-    #notice-list {display:grid; gap:15px;}
-    .notice-card {background:white; padding:15px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);} 
-    .notice-card h3 {margin:0; font-size:18px; color:#004080;}
-    .notice-card p {margin:5px 0;}
-    .notice-card a {color:#0066cc; font-weight:bold; text-decoration:none;}
-    footer {background:#00264d; color:white; text-align:center; padding:20px; margin-top:30px;}
+    body {margin:0; font-family:'Poppins', sans-serif; background:#f1f1f1; color:#333;}
+    header {position:sticky; top:0; background:#1a202c; color:white; display:flex; align-items:center; justify-content:space-between; padding:20px 40px; z-index:1000; box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+    header img {height:50px; border-radius:8px;}
+    nav a {color:white; text-decoration:none; margin:0 15px; font-weight:600;}
+    nav a:hover {text-decoration:underline; color:#81e6d9;}
+    /* Hero Section */
+    .hero {background-image: url('https://via.placeholder.com/1600x900'); background-size: cover; background-position: center; color:white; text-align:center; padding:120px 20px;}
+    .hero h1 {font-size:3.5rem; text-transform:uppercase; font-weight:700;}
+    .hero p {font-size:1.5rem; max-width:800px; margin:auto; padding-top:20px;}
+    /* Section styling */
+    .section {padding:80px 20px; max-width:1200px; margin:auto; text-align:center;}
+    .section h2 {color:#004080; margin-bottom:30px; font-size:2rem; font-weight:600;}
+    .section p {color:#4a5568; font-size:1.2rem; line-height:1.6;}
+    /* Notice Card */
+    .notice-card {background:white; padding:25px; border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:20px; transition:transform 0.3s;}
+    .notice-card:hover {transform:translateY(-5px);}
+    .notice-card h3 {font-size:1.6rem; color:#2d3748;}
+    .notice-card a {color:#4fd1c5; font-weight:bold; text-decoration:none;}
+    /* Footer Styling */
+    footer {background:#2d3748; color:white; text-align:center; padding:40px 20px;}
+    footer p {margin:0;}
+    /* Language Selector */
+    .language-selector {position:absolute; top:20px; right:20px; font-size:1.2rem;}
+    .language-selector select {background-color:#004080; color:white; border:none; padding:5px 15px; border-radius:5px;}
   </style>
 </head>
 <body>
 
+<!-- Language Selector -->
+<div class="language-selector">
+  <select id="language-switcher" onchange="changeLanguage()">
+    <option value="en">English</option>
+    <option value="bn">বাংলা</option>
+  </select>
+</div>
+
 <header>
   <div style="display:flex; align-items:center; gap:10px;">
-    <strong>Chatkhil Government Technical School and College</strong>
+    <img src="images.jpg" alt="Logo">
+    <strong id="school-name">Chatkhil Government Technical School and College</strong>
   </div>
   <nav>
-    <a href="#about">About Us</a>
-    <a href="#academic">Academics</a>
-    <a href="#notices">Notices</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" id="about-link">About Us</a>
+    <a href="#academic" id="academic-link">Academics</a>
+    <a href="#notices" id="notices-link">Notices</a>
+    <a href="#contact" id="contact-link">Contact</a>
   </nav>
 </header>
 
 <section class="hero">
-  <h1>Welcome to Chatkhil Government Technical School and College</h1>
-  <p>Education, Discipline, and the Light of Technology</p>
+  <h1 id="hero-title">Welcome to Chatkhil Government Technical School and College</h1>
+  <p id="hero-subtitle">Education, Discipline, and the Light of Technology</p>
 </section>
 
 <section id="about" class="section">
-  <h2>About Us</h2>
-  <p>Chatkhil Government Technical School and College is a modern educational institution where students are building their future through technical and general education.</p>
+  <h2 id="about-heading">About Us</h2>
+  <p id="about-description">We are a premier institution offering world-class technical education and skill development for students to thrive in the modern world.</p>
 </section>
 
 <section id="academic" class="section">
-  <h2>Academics</h2>
-  <p>Our institution provides technical and general education programs. We offer quality education with experienced teachers and modern classrooms.</p>
+  <h2 id="academic-heading">Academics</h2>
+  <p id="academic-description">Our programs focus on providing quality education and a platform for students to excel in both technical and general fields.</p>
 </section>
 
 <section id="notices" class="section">
-  <h2>Notices Board</h2>
+  <h2 id="notices-heading">Notices Board</h2>
   <div id="notice-list">Loading...</div>
 </section>
 
 <section id="contact" class="section">
-  <h2>Contact</h2>
-  <p><strong>Address:</strong> Maijdi - Ramgonj Rd, Dashgaria 3878</p>
-  <p><strong>Phone:</strong> 01825062230</p>
+  <h2 id="contact-heading">Contact</h2>
+  <p id="contact-address"><strong>Address:</strong> Maijdi - Ramgonj Rd, Dashgaria 3878</p>
+  <p id="contact-phone"><strong>Phone:</strong> 01825062230</p>
 </section>
 
 <footer>
@@ -66,31 +86,53 @@
 </footer>
 
 <script>
-  const sheetID = "1FGNgaNGtq4rDewGnVDkGpBbclHx9bFST6FFebRwcGnM"; // Your Google Sheet ID
-  const sheetURL = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
+  const translations = {
+    en: {
+      "school-name": "Chatkhil Government Technical School and College",
+      "about-link": "About Us",
+      "academic-link": "Academics",
+      "notices-link": "Notices",
+      "contact-link": "Contact",
+      "hero-title": "Welcome to Chatkhil Government Technical School and College",
+      "hero-subtitle": "Education, Discipline, and the Light of Technology",
+      "about-heading": "About Us",
+      "about-description": "We are a premier institution offering world-class technical education and skill development for students to thrive in the modern world.",
+      "academic-heading": "Academics",
+      "academic-description": "Our programs focus on providing quality education and a platform for students to excel in both technical and general fields.",
+      "notices-heading": "Notices Board",
+      "contact-heading": "Contact",
+      "contact-address": "Address: Maijdi - Ramgonj Rd, Dashgaria 3878",
+      "contact-phone": "Phone: 01825062230"
+    },
+    bn: {
+      "school-name": "চাটখিল সরকারি টেকনিক্যাল স্কুল অ্যান্ড কলেজ",
+      "about-link": "আমাদের সম্পর্কে",
+      "academic-link": "একাডেমিক",
+      "notices-link": "নোটিশ",
+      "contact-link": "যোগাযোগ",
+      "hero-title": "স্বাগতম চাটখিল সরকারি টেকনিক্যাল স্কুল অ্যান্ড কলেজে",
+      "hero-subtitle": "শিক্ষা, শৃঙ্খলা এবং প্রযুক্তির আলোকবর্তিকা",
+      "about-heading": "আমাদের সম্পর্কে",
+      "about-description": "আমরা একটি প্রিমিয়ার শিক্ষা প্রতিষ্ঠান যেখানে শিক্ষার্থীরা আধুনিক বিশ্বের জন্য কারিগরি শিক্ষা ও দক্ষতা অর্জন করছে।",
+      "academic-heading": "একাডেমিক",
+      "academic-description": "আমাদের প্রোগ্রামগুলি মানসম্মত শিক্ষা প্রদানে এবং শিক্ষার্থীদের প্রযুক্তিগত ও সাধারণ ক্ষেত্রে উৎকর্ষ অর্জনে সহায়ক।",
+      "notices-heading": "নোটিশ বোর্ড",
+      "contact-heading": "যোগাযোগ",
+      "contact-address": "ঠিকানা: মাইজদী - রামগঞ্জ রোড, দাশগরিয়া ৩৮৭৮",
+      "contact-phone": "ফোন: ০১৮২৫০৬২২৩০"
+    }
+  };
 
-  fetch(sheetURL)
-    .then(res => res.text())
-    .then(data => {
-      const json = JSON.parse(data.substr(47).slice(0,-2));
-      const rows = json.table.rows;
-      const container = document.getElementById('notice-list');
-      container.innerHTML = "";
-      rows.forEach(r => {
-        const date = r.c[0]?.v || "";
-        const title = r.c[1]?.v || "";
-        const link = r.c[2]?.v || "";
-        if(title){
-          const card = document.createElement('div');
-          card.className = 'notice-card';
-          card.innerHTML = `<h3>${title}</h3><p>Date: ${date}</p>${link?`<a href="${link}" target="_blank">Details</a>`:""}`;
-          container.appendChild(card);
-        }
-      });
-    })
-    .catch(err => {
-      document.getElementById('notice-list').innerText = 'There was an issue loading the notices';
-    });
+  function changeLanguage() {
+    const lang = document.getElementById("language-switcher").value;
+    const translation = translations[lang];
+
+    for (const key in translation) {
+      if (translation.hasOwnProperty(key)) {
+        document.getElementById(key).innerText = translation[key];
+      }
+    }
+  }
 </script>
 
 </body>
